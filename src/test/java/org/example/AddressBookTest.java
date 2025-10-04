@@ -17,7 +17,7 @@ public class AddressBookTest {
     @Before
     public void setUp() {
         addressBook = new AddressBook();
-        buddyInfo1 =  new BuddyInfo("John", 1234567893l);
+        buddyInfo1 =  new BuddyInfo("John", 1234567890l);
         buddyInfo2 =  new BuddyInfo("Jane", 1234567891l);
         buddyInfo3 =  new BuddyInfo("Henry", 1234567892l);
     }
@@ -35,7 +35,7 @@ public class AddressBookTest {
         Assert.assertEquals(2, buddies.size());
         Assert.assertEquals(buddyInfo2, buddies.get(1));
 
-        addressBook.addBuddy("Henry", 1234567892l);
+        addressBook.addBuddy("Henry", 1234567893l);
         buddies = addressBook.getBuddies();
         Assert.assertEquals(3, buddies.size());
         Assert.assertEquals("Henry", buddies.get(2).getName());
