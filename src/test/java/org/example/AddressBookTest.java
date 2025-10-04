@@ -17,7 +17,7 @@ public class AddressBookTest {
     @Before
     public void setUp() {
         addressBook = new AddressBook();
-        buddyInfo1 =  new BuddyInfo("John", 1234567890l);
+        buddyInfo1 =  new BuddyInfo("John", 1234567893l);
         buddyInfo2 =  new BuddyInfo("Jane", 1234567891l);
         buddyInfo3 =  new BuddyInfo("Henry", 1234567892l);
     }
