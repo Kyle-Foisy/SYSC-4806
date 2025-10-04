@@ -1,6 +1,7 @@
 package org.example;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,9 +47,6 @@ public class WebApplicationTest {
                 = restTemplate.getForEntity("http://localhost:" + port + "/book", String.class);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertNotNull(response.getBody());
-        assertThat(response.getBody().contains("AddressBook 1:\n" +
-                "John 1234567890\n" +
-                "Jane 1234567891\n" +
-                "Henry 1234567892"));
+        Assertions.assertTrue(response.getBody().contains("AddressBook 1: <br>John 1234567893 <br> Jane 1234567891 <br> Henry 1234567892 <br>"));
     }
 }
