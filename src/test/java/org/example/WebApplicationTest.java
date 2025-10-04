@@ -47,6 +47,6 @@ public class WebApplicationTest {
                 = restTemplate.getForEntity("http://localhost:" + port + "/book", String.class);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertNotNull(response.getBody());
-        Assertions.assertTrue(response.getBody().contains("AddressBook 1: <br>John 1234567891 <br> Jane 1234567891 <br> Henry 1234567892 <br>"));
+        Assertions.assertTrue(response.getBody().contains("AddressBook 1: <br>John 1234567890 <br> Jane 1234567891 <br> Henry 1234567892 <br>"));
     }
 }
