@@ -13,7 +13,7 @@ public class AddressBook implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private ArrayList<BuddyInfo> buddies;
 
     /**
@@ -48,6 +48,21 @@ public class AddressBook implements Serializable {
      */
     public void setBuddies(ArrayList<BuddyInfo> buddies) {
         this.buddies = buddies;
+    }
+
+    /**
+     * Gets the Id for this address book
+     * @return The id of this address book
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the Id for this address book
+     */
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
