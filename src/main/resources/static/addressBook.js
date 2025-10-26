@@ -11,13 +11,12 @@ function get_AddressBook() {
         type: 'GET',
     }).then(function(data) {
         $addressBookSelector.append( "Address Book" + data.id)
-        $.each(data.buddies, function(i, buddy) {
+        for (var i = 0; i < data.buddies.length; i++) {
             $buddySelector.append('<tr>');
-            $buddySelector.append('<td>' + buddy.name + '</td>');
-            $buddySelector.append('<td>' + buddy.phonenumber + '</td>');
+            $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
+            $buddySelector.append('<td>' + data.buddies[i].phonenumber + '</td>');
             $buddySelector.append('</tr>');
-            }
-        )
+        }
     })
 }
 
