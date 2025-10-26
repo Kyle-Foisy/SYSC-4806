@@ -29,19 +29,19 @@ function get_AddressBook() {
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}'
     neededURL = neededURL.replace("${inputValue}", inputValue)
     $addressBookSelector.empty()
-    let body = buddyTable.getElementsByTagName("tbody")
-    if (body){
-        body.innerHTML = ''
-    }
+    // let body = buddyTable.getElementsByTagName("tbody")
+    // if (body){
+    //     body.innerHTML = ''
+    // }
     $.ajax({
         url: neededURL,
         type: 'GET',
         data: book,
         success: function(data) {
             $addressBookSelector.append("Address Book " + data.id)
-            $.each(data.buddies, function(i, buddy){
-                addRowBuddyTable(buddy.name, buddy.phonenumber)
-            })
+            // $.each(data.buddies, function(i, buddy){
+            //     addRowBuddyTable(buddy.name, buddy.phonenumber)
+            // })
         },
         error: function () {
             $addressBookSelector.append("ERROR")
