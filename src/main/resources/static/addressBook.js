@@ -10,7 +10,7 @@ function get_AddressBook() {
         url: neededURL,
         type: 'GET',
     }).then(function(data) {
-        $addressBookSelector.append( "Address Book" + data.id)
+        $addressBookSelector.append( "Address Book " + data.id)
         for (var i = 0; i < data.buddies.length; i++) {
             $buddySelector.append('<tr>');
             $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
