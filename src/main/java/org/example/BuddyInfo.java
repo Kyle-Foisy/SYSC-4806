@@ -9,7 +9,6 @@ public class BuddyInfo implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    @Column()
     private String name;
     private long phonenumber;
 
