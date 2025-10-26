@@ -9,7 +9,9 @@ function get_AddressBook() {
     $.ajax({
         url: neededURL,
         type: 'GET',
+        dataType: "json",
         success: function(data) {
+            data.buddies = undefined;
             $addressBookSelector.append("Address Book " + data.id)
             for (var i = 0; i < data.buddies.length; i++) {
                 $buddySelector.append('<tr>');
