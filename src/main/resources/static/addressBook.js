@@ -23,7 +23,38 @@ function addRowBuddyTable(name, phonenumber){
     cell2.appendChild(document.createTextNode(phonenumber.toString()))
 }
 
-function get_AddressBook() {
+function get_AddressBook(){
+    let inputValue = $('#id').val();
+    get_AddressBook_by_id(inputValue)
+}
+
+
+function get_AddressBook_by_id(id) {
+    let $addressBookSelector = $('.addressBookid');
+    let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
+    neededURL = neededURL.replace("${inputValue}", id);
+    $addressBookSelector.empty();
+    let table = document.getElementById("buddies")
+    table.rows.remove()
+
+
+    $.ajax({
+        url: neededURL,
+        type: 'GET',
+        data: 'book',
+        success: function(data) {
+            $addressBookSelector.append("Address Book " + data.id);
+            $.each(data.buddies, function(i, buddy){
+                addRowBuddyTable(buddy.name, buddy.phonenumber);
+            })
+        },
+        error: function () {
+            alert("No AddressBook with id: " + id)
+        }
+    })
+}
+
+function addBook() {
     let inputValue = $('#id').val();
     let $addressBookSelector = $('.addressBookid');
     let $buddySelector = $('.buddybody');
