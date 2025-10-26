@@ -72,7 +72,7 @@ function addBook() {
             display_AddressBook(data)
         },
         error: function () {
-
+            alert("Could not create new book!")
         }
     })
 }
@@ -81,7 +81,7 @@ function addBuddy() {
     let id = $('#id_addbuddy').val();
     let name = $('#name_addbuddy').val();
     let number = $('#number_addbuddy').val();
-    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/newbookjs?id=${id}&name=${name}&phonenumber${number}`;
+    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/addBuddyjs?id=${id}&name=${name}&phonenumber${number}`;
     $.ajax({
         url: neededURL,
         type: 'POST',
@@ -90,7 +90,7 @@ function addBuddy() {
             display_AddressBook(data)
         },
         error: function () {
-
+            alert("Could not add buddy!")
         }
     })
 }

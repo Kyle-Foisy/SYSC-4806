@@ -81,4 +81,16 @@ public class AddressbookController {
         model.addAttribute("addbuddyredirect", "/addbuddy?id=" + curAddressBookId);
         return "book";
     }
+
+    @PostMapping("/addbuddy")
+    @ResponseBody
+    public AddressBook addBuddy(@RequestParam(name = "id", required=true, defaultValue="1") int id, @RequestParam(name = "name", required=true, defaultValue="") String name, @RequestParam(name = "id", required=true, defaultValue="1") int phonenumber, Model model) {
+        BuddyInfo buddyInfo = new BuddyInfo(name, phonenumber);
+        buddyInfoRepository.save(buddyInfo);
+        AddressBook addressBook = addressBookRepository.findById(curAddressBookId);
+        addressBook.addBuddy(buddyInfo);
+        model.addAttribute("bookString", addressBookRepository.save(addressBook));
+        model.addAttribute("addbuddyredirect", "/addbuddy?id=" + curAddressBookId);
+        return addressBook;
+    }
 }
