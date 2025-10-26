@@ -30,6 +30,12 @@ function get_AddressBook(){
 
 function display_AddressBook(data){
     let $addressBookSelector = $('.addressBookid');
+    $addressBookSelector.empty();
+    let table = document.getElementById("buddies");
+    let rowCount = table.rows.length
+    for (var i = 1; i < rowCount; i++){
+        table.deleteRow(1);
+    }
     $addressBookSelector.append("Address Book " + data.id);
     $.each(data.buddies, function(i, buddy){
         addRowBuddyTable(buddy.name, buddy.phonenumber);
@@ -41,12 +47,6 @@ function get_AddressBook_by_id(id) {
     let $addressBookSelector = $('.addressBookid');
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
     neededURL = neededURL.replace("${inputValue}", id);
-    $addressBookSelector.empty();
-    let table = document.getElementById("buddies");
-    let rowCount = table.rows.length
-    for (var i = 1; i < rowCount; i++){
-        table.deleteRow(1);
-    }
 
     $.ajax({
         url: neededURL,
@@ -84,7 +84,6 @@ function addBuddy() {
     $.ajax({
         url: neededURL,
         type: 'POST',
-        data: 'book',
         success: function(data) {
             display_AddressBook(data);
         },
