@@ -11,12 +11,12 @@ function get_AddressBook() {
         type: 'GET',
         dataType: "json",
         success: function(data) {
-            data.buddies = undefined;
-            $addressBookSelector.append("Address Book " + data.id)
-            for (var i = 0; i < data.buddies.length; i++) {
+            var obj = JSON.parse(data)
+            $addressBookSelector.append("Address Book " + obj.id)
+            for (var i = 0; i < obj.buddies.length; i++) {
                 $buddySelector.append('<tr>');
-                $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
-                $buddySelector.append('<td>' + data.buddies[i].phonenumber + '</td>');
+                $buddySelector.append('<td>' + obj.buddies[i].name + '</td>');
+                $buddySelector.append('<td>' + obj.buddies[i].phonenumber + '</td>');
                 $buddySelector.append('</tr>');
             }
         },
