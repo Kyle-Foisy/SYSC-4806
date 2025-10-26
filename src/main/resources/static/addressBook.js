@@ -1,18 +1,18 @@
 
 
-var $buddy = {
+const $buddy = {
     id: 0,
     name: "",
     phonenumber: 1234567890
 }
-var $buddies = [$buddy.val()]
+const $buddies = [$buddy.val()]
 
-var book = {
+const book = {
     id: 0,
     buddies: $buddies.val()
 }
 
-var buddyTable = document.getElementById('Buddies')
+const buddyTable = document.getElementById('Buddies')
 
 function addRowBuddyTable(name, phonenumber){
     let row = buddyTable.insertRow(buddyTable.rows.length)
@@ -29,9 +29,9 @@ function get_AddressBook() {
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}'
     neededURL = neededURL.replace("${inputValue}", inputValue)
     $addressBookSelector.empty()
-    let body = buddyTable.getElementsByTagName(tbody)
+    let body = buddyTable.getElementsByTagName("tbody")
     if (body){
-        body = ''
+        body.innerHTML = ''
     }
     $.ajax({
         url: neededURL,
