@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class AddressbookController {
     AddressBookRepository addressBookRepository;
     BuddyInfoRepository buddyInfoRepository;
@@ -37,6 +37,7 @@ public class AddressbookController {
     }
 
     @GetMapping("/books")
+    @ResponseBody
     public AddressBook books(@RequestParam(name = "id", required=true) int id) {
         return addressBookRepository.findById(id);
     }
