@@ -1,6 +1,6 @@
 function get_AddressBook() {
     let inputValue = $('#id').val();
-    let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}'
+    let neededURL = 'https://localhost:8080/books?id=${inputValue}'
     neededURL.replace("${inputValue}", inputValue)
     $.ajax({
         url: neededURL,
@@ -18,8 +18,7 @@ function get_AddressBook() {
     })
 }
 
-$('#search-AddressBook').on('click', function (
-))
+$('#search-AddressBook').on('click', get_AddressBook())
 
 $(document).ready(function() {
 

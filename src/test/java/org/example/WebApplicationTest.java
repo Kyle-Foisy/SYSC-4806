@@ -38,7 +38,6 @@ public class WebApplicationTest {
                 = restTemplate.getForEntity("http://localhost:" + port, String.class);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertNotNull(response.getBody());
-        assertThat(response.getBody().contains("View book here"));
     }
 
     @Test
