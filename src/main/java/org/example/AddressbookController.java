@@ -56,6 +56,14 @@ public class AddressbookController {
         return "book";
     }
 
+    @PostMapping("/newbookjs")
+    @ResponseBody
+    public AddressBook addBook(@ModelAttribute AddressBook addressBook,  Model model) {
+        model.addAttribute("bookString", addressBookRepository.save(addressBook));
+        model.addAttribute("addbuddyredirect", "/addbuddy?id=" + addressBook.getId());
+        return addressBook;
+    }
+
     @GetMapping("/addbuddy")
     public String addBuddyForm(@RequestParam(name = "id", required=true, defaultValue="1") int id, @ModelAttribute BuddyInfo buddyInfo, Model model) {
         model.addAttribute("bookString", addressBookRepository.findById(id));
