@@ -39,6 +39,11 @@ public class AddressbookController {
         return "book";
     }
 
+    @GetMapping("/books")
+    public AddressBook books(@RequestParam(name = "id", required=true) int id) {
+        return addressBookRepository.findById(id);
+    }
+
     @GetMapping("/newbook")
     public String addBookForm(@ModelAttribute AddressBook addressBook,  Model model) {
         model.addAttribute("bookString", addressBookRepository.save(addressBook));

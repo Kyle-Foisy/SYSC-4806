@@ -2,9 +2,29 @@
 <html>
 <head>
     <title>AddressBook System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="addressBook.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>View book <a href="/booksearch">here</a></p>
+    <div id = 'AddressBook'>
+        <h1 class="addressBook-id">Address Book </h1>
+        <table id = 'Buddies'>
+            <thead>
+                <tr>
+                    <th>Buddy Name</th>
+                    <th>Buddy Number</th>
+                </tr>
+            </thead>
+            <tbody id = "buddybody">
+
+            </tbody>
+        </table>
+    </div>
+    <label for="myInput">AddressBook ID:</label>
+    <input type="text" id="myInput" placeholder="Enter AddressBook id here">
+    <button onclick="displayInputValue()">Search For Address Book</button>
+
+    <p>View book <a href="/booksearch">here</a></p>
 </body>
 </html>
