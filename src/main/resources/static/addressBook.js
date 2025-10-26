@@ -1,3 +1,17 @@
+
+
+var $buddy = {
+    id: 0,
+    name: "",
+    phonenumber: 1234567890
+}
+var $buddies = [$buddy.val()]
+
+var book = {
+    id: 0,
+    buddies: $buddies.val()
+}
+
 function get_AddressBook() {
     let inputValue = $('#id').val();
     let $addressBookSelector = $('.addressBookid')
@@ -9,14 +23,13 @@ function get_AddressBook() {
     $.ajax({
         url: neededURL,
         type: 'GET',
-        dataType: "json",
+        data: "book",
         success: function(data) {
-            var obj = JSON.parse(data)
-            $addressBookSelector.append("Address Book " + obj.id)
-            for (var i = 0; i < obj.buddies.length; i++) {
+            $addressBookSelector.append("Address Book " + data.id)
+            for (var i = 0; i < data.buddies.length; i++) {
                 $buddySelector.append('<tr>');
-                $buddySelector.append('<td>' + obj.buddies[i].name + '</td>');
-                $buddySelector.append('<td>' + obj.buddies[i].phonenumber + '</td>');
+                $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
+                $buddySelector.append('<td>' + data.buddies[i].phonenumber + '</td>');
                 $buddySelector.append('</tr>');
             }
         },
