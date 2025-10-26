@@ -80,7 +80,7 @@ function addBuddy() {
     let id = $('#id_addbuddy').val();
     let name = $('#name_addbuddy').val();
     let number = $('#number_addbuddy').val();
-    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/addbuddyjs?id=${id}&name=${name}&phonenumber${number}`;
+    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/addbuddyjs?id=${id}&name=${name}&phonenumber=${number}`;
     $.ajax({
         url: neededURL,
         type: 'POST',
