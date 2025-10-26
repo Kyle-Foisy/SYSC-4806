@@ -81,7 +81,7 @@ public class AddressbookController {
 
     @PostMapping("/addbuddyjs")
     @ResponseBody
-    public AddressBook addBuddy(@RequestParam(name = "id", required=true) int id, @RequestParam(name = "name", required=true) String name, @RequestParam(name = "phonenumber", required=true) int phonenumber, Model model) {
+    public AddressBook addBuddy(@RequestParam(name = "id", required=true) int id, @RequestParam(name = "name", required=true) String name, @RequestParam(name = "phonenumber", required=true) long phonenumber, Model model) {
         BuddyInfo buddyInfo = new BuddyInfo(name, phonenumber);
         buddyInfoRepository.save(buddyInfo);
         AddressBook addressBook = addressBookRepository.findById(id);
