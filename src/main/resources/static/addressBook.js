@@ -23,7 +23,7 @@ function get_AddressBook() {
     $.ajax({
         url: neededURL,
         type: 'GET',
-        data: "book",
+        data: book,
         success: function(data) {
             $addressBookSelector.append("Address Book " + data.id)
             $.each(data.buddies, function(i, buddy){
