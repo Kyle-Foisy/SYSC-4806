@@ -28,27 +28,29 @@ function get_AddressBook(){
     get_AddressBook_by_id(inputValue)
 }
 
+function display_AddressBook(data){
+    let $addressBookSelector = $('.addressBookid');
+    $addressBookSelector.append("Address Book " + data.id);
+    $.each(data.buddies, function(i, buddy){
+        addRowBuddyTable(buddy.name, buddy.phonenumber);
+    })
+}
+
 
 function get_AddressBook_by_id(id) {
     let $addressBookSelector = $('.addressBookid');
+    let $buddyTableBodySelector = $('.buddybody')
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
     neededURL = neededURL.replace("${inputValue}", id);
     $addressBookSelector.empty();
-    let tableBody = document.getElementById("buddies").getElementsByTagName('tbody')
-    if (tableBody) {
-        tableBody.innerHTML = ""
-    }
-
+    $buddyTableBodySelector.empty();
 
     $.ajax({
         url: neededURL,
         type: 'GET',
         data: 'book',
         success: function(data) {
-            $addressBookSelector.append("Address Book " + data.id);
-            $.each(data.buddies, function(i, buddy){
-                addRowBuddyTable(buddy.name, buddy.phonenumber);
-            })
+            display_AddressBook(data);
         },
         error: function () {
             alert("No AddressBook with id: " + id)
@@ -57,25 +59,16 @@ function get_AddressBook_by_id(id) {
 }
 
 function addBook() {
-    let inputValue = $('#id').val();
-    let $addressBookSelector = $('.addressBookid');
-    let $buddySelector = $('.buddybody');
-    let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
-    neededURL = neededURL.replace("${inputValue}", inputValue);
-    $addressBookSelector.empty();
-
+    let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/newBook';
     $.ajax({
         url: neededURL,
-        type: 'GET',
+        type: 'POST',
         data: 'book',
         success: function(data) {
-            $addressBookSelector.append("Address Book " + data.id);
-            $.each(data.buddies, function(i, buddy){
-                addRowBuddyTable(buddy.name, buddy.phonenumber);
-            })
+            display_AddressBook(data)
         },
         error: function () {
-            $addressBookSelector.append("ERROR");
+
         }
     })
 }
