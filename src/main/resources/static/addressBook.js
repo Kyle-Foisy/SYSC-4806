@@ -12,14 +12,27 @@ var book = {
     buddies: $buddies.val()
 }
 
+var buddyTable = document.getElementById('Buddies')
+
+function addRowBuddyTable(name, phonenumber){
+    let row = buddyTable.insertRow(buddyTable.rows.length)
+    let cell1 = row.insertCell(0)
+    let cell2 = row.insertCell(1)
+    cell1.innerHTML= name
+    cell2.innerHTML = phonenumber
+}
+
 function get_AddressBook() {
     let inputValue = $('#id').val();
     let $addressBookSelector = $('.addressBookid')
-    let buddyTable = document.getElementById('Buddies')
+
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}'
     neededURL = neededURL.replace("${inputValue}", inputValue)
     $addressBookSelector.empty()
-    $buddySelector.empty()
+    let body = buddyTable.getElementsByTagName(tbody)
+    if (body){
+        body = ''
+    }
     $.ajax({
         url: neededURL,
         type: 'GET',
@@ -27,11 +40,7 @@ function get_AddressBook() {
         success: function(data) {
             $addressBookSelector.append("Address Book " + data.id)
             $.each(data.buddies, function(i, buddy){
-                let row = buddyTable.insertRow(buddyTable.rows.length)
-                let cell1 = row.insertCell(0)
-                let cell2 = row.insertCell(1)
-                cell1.innerHTML= buddy.name
-                cell2.innerHTML = buddy.phonenumber
+                addRowBuddyTable(buddy.name, buddy.phonenumber)
             })
         },
         error: function () {

@@ -25,6 +25,13 @@
     <input type="text" id="id" placeholder="Enter AddressBook id here">
     <button id = "search-AddressBook", onclick="get_AddressBook()">Search For Address Book</button>
 
-    <p>View book <a href="/booksearch">here</a></p>
+    <noscript>
+        <style>
+            #AddressBook {
+                display: none;
+            }
+        </style>
+        <p>Javascript is disabled. View books <a href="/booksearch">here</a></p>
+    </noscript>
 </body>
 </html>
