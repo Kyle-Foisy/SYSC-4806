@@ -38,7 +38,7 @@ function get_AddressBook() {
         success: function(data) {
             $addressBookSelector.append("Address Book " + data.id);
             $.each(data.buddies, function(i, buddy){
-                addRowBuddyTable(buddy.name, buddy.phonenumber)
+                addRowBuddyTable(buddy.name, buddy.phonenumber);
             })
         },
         error: function () {
