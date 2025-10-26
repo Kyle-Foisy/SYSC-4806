@@ -1,8 +1,5 @@
 package org.example;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,9 +55,9 @@ public class AddressbookController {
 
     @PostMapping("/newbookjs")
     @ResponseBody
-    public AddressBook addBook(@ModelAttribute AddressBook addressBook,  Model model) {
-        model.addAttribute("bookString", addressBookRepository.save(addressBook));
-        model.addAttribute("addbuddyredirect", "/addbuddy?id=" + addressBook.getId());
+    public AddressBook addBook() {
+        AddressBook addressBook = new AddressBook();
+        addressBookRepository.save(addressBook);
         return addressBook;
     }
 
@@ -82,12 +79,12 @@ public class AddressbookController {
         return "book";
     }
 
-    @PostMapping("/addbuddy")
+    @PostMapping("/addbuddyjs")
     @ResponseBody
     public AddressBook addBuddy(@RequestParam(name = "id", required=true, defaultValue="1") int id, @RequestParam(name = "name", required=true, defaultValue="") String name, @RequestParam(name = "id", required=true, defaultValue="1") int phonenumber, Model model) {
         BuddyInfo buddyInfo = new BuddyInfo(name, phonenumber);
         buddyInfoRepository.save(buddyInfo);
-        AddressBook addressBook = addressBookRepository.findById(curAddressBookId);
+        AddressBook addressBook = addressBookRepository.findById(id);
         addressBook.addBuddy(buddyInfo);
         model.addAttribute("bookString", addressBookRepository.save(addressBook));
         model.addAttribute("addbuddyredirect", "/addbuddy?id=" + curAddressBookId);

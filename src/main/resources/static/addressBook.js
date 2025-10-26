@@ -39,7 +39,6 @@ function display_AddressBook(data){
 
 function get_AddressBook_by_id(id) {
     let $addressBookSelector = $('.addressBookid');
-    let $buddyTableBodySelector = $('.buddybody')
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
     neededURL = neededURL.replace("${inputValue}", id);
     $addressBookSelector.empty();
@@ -57,7 +56,7 @@ function get_AddressBook_by_id(id) {
             display_AddressBook(data);
         },
         error: function () {
-            alert("No AddressBook with id: " + id)
+            alert("No AddressBook with id: " + id);
         }
     })
 }
@@ -69,10 +68,10 @@ function addBook() {
         type: 'POST',
         data: 'book',
         success: function(data) {
-            display_AddressBook(data)
+            display_AddressBook(data);
         },
         error: function () {
-            alert("Could not create new book!")
+            alert("Could not create new book!");
         }
     })
 }
@@ -81,16 +80,16 @@ function addBuddy() {
     let id = $('#id_addbuddy').val();
     let name = $('#name_addbuddy').val();
     let number = $('#number_addbuddy').val();
-    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/addBuddyjs?id=${id}&name=${name}&phonenumber${number}`;
+    let neededURL = `https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/addvuddyjs?id=${id}&name=${name}&phonenumber${number}`;
     $.ajax({
         url: neededURL,
         type: 'POST',
         data: 'book',
         success: function(data) {
-            display_AddressBook(data)
+            display_AddressBook(data);
         },
         error: function () {
-            alert("Could not add buddy!")
+            alert("Could not add buddy!");
         }
     })
 }
