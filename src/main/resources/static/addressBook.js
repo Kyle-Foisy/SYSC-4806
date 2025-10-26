@@ -25,7 +25,7 @@ function get_AddressBook() {
         type: 'GET',
         data: "book",
         success: function(data) {
-            $addressBookSelector.append("Address Book " + data.buddies)
+            $addressBookSelector.append("Address Book " + data.buddies[0].name)
             for (var i = 0; i < data.buddies.length; i++) {
                 $buddySelector.append('<tr>');
                 $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
