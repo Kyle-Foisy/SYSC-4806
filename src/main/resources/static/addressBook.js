@@ -9,13 +9,17 @@ function get_AddressBook() {
     $.ajax({
         url: neededURL,
         type: 'GET',
-    }).then(function(data) {
-        $addressBookSelector.append( "Address Book " + data.id)
-        for (var i = 0; i < data.buddies.length; i++) {
-            $buddySelector.append('<tr>');
-            $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
-            $buddySelector.append('<td>' + data.buddies[i].phonenumber + '</td>');
-            $buddySelector.append('</tr>');
+        success: function(data) {
+            $addressBookSelector.append("Address Book " + data.id)
+            for (var i = 0; i < data.buddies.length; i++) {
+                $buddySelector.append('<tr>');
+                $buddySelector.append('<td>' + data.buddies[i].name + '</td>');
+                $buddySelector.append('<td>' + data.buddies[i].phonenumber + '</td>');
+                $buddySelector.append('</tr>');
+            }
+        },
+        error: function () {
+            $addressBookSelector.append("ERROR")
         }
     })
 }
