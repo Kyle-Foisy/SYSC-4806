@@ -34,8 +34,11 @@ function get_AddressBook_by_id(id) {
     let neededURL = 'https://new-kylefoisyaddressbook-d0b8gwead4ahf3f5.eastus2-01.azurewebsites.net/books?id=${inputValue}';
     neededURL = neededURL.replace("${inputValue}", id);
     $addressBookSelector.empty();
-    // let table = document.getElementById("buddies")
-    // table.rows.remove()
+    let tableBody = document.getElementById("buddies").getElementsByTagName('tbody')
+    if (tableBody) {
+        tableBody.innerHTML = ""
+    }
+
 
     $.ajax({
         url: neededURL,
