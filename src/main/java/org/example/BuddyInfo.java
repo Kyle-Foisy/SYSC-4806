@@ -3,12 +3,13 @@ package org.example;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Entity
 public class BuddyInfo implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private int buddyId;
     private String name;
     private long phonenumber;
 
@@ -22,12 +23,12 @@ public class BuddyInfo implements Serializable {
         phonenumber = -1;
     }
 
-    public int getId() {
-        return id;
+    public int getBuddyId() {
+        return buddyId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBuddyId(int id) {
+        this.buddyId = id;
     }
 
     public String getName() {

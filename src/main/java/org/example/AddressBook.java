@@ -11,7 +11,7 @@ public class AddressBook implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToMany(cascade = CascadeType.ALL)
+    @Column(length = 1048575)
     private ArrayList<BuddyInfo> buddies;
 
     /**
